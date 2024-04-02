@@ -1,5 +1,7 @@
 /*
-
+* Two phase traffic signal simulation on 8 x 8 Neopixel Matrix
+* FSM Based Control
+* Author: Vishweswar Eswaran
 */
 
 #include <Adafruit_NeoPixel.h>
@@ -445,7 +447,7 @@ void control_logic(bool reset, signal_state * intersection)
 }
 
 
-signal_state ece342_intersection; //the intersection name
+signal_state uoft_intersection; //the intersection name
 
 void setup() {
 
@@ -454,13 +456,13 @@ void setup() {
 
   pixel.begin();
   pixel.clear();
- state_init(&ece342_intersection);
- execute_state(&ece342_intersection);
+ state_init(&uoft_intersection);
+ execute_state(&uoft_intersection);
   pixel.show();
 }
 
 void loop() {
 
-  control_logic(false, &ece342_intersection);
+  control_logic(false, &uoft_intersection);
   pixel.show();
 }
