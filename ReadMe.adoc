@@ -4,55 +4,59 @@
 :Revision: version#
 :License: Public Domain
 
-= Project: {Project}
+= Two-Phase Traffic Signal Simulation
 
-Describe your project
+== Overview
 
-== Step 1: Installation
-Please describe the steps to install this project.
+This project simulates a two-phase traffic signal on an 8 x 8 NeoPixel Matrix, controlled by a finite state machine (FSM). It's designed to showcase how traffic light control systems can be implemented using simple hardware and programming constructs.
 
-For example:
+== Author
+Vishweswar Eswaran
 
-1. Open this file
-2. Edit as you like
-3. Release to the World!
+== Features
+Simulates traffic lights for two intersecting roads.
+Uses FSM for controlling the sequence of traffic lights.
+Visualizes traffic movement on an 8 x 8 NeoPixel Matrix.
 
-== Step 2: Assemble the circuit
+== Hardware Requirements
+Arduino Uno or similar microcontroller board.
+8 x 8 NeoPixel Matrix.
+Jumper wires for connections.
 
-Assemble the circuit following the diagram layout.png attached to the sketch
+== Software Requirements
+Arduino IDE for compiling and uploading the code to the microcontroller.
+Adafruit_NeoPixel library.
 
-== Step 3: Load the code
+== Installation
+Setting Up the Hardware
+Connect the NeoPixel matrix's DIN pin to pin 8 on the Arduino.
+Connect the NeoPixel matrix's 5V and GND to the 5V and GND pins on the Arduino, respectively.
 
-Upload the code contained in this sketch on to your board
+== Preparing the Software
+Install the Arduino IDE on your computer.
+Install the Adafruit_NeoPixel library via the Library Manager in the Arduino IDE.
+Open the provided code in the Arduino IDE.
 
-=== Folder structure
+== Usage
+Upload the code to your Arduino board using the Arduino IDE.
+Once the code is uploaded, the simulation starts automatically.
+Observe the traffic light sequence on the NeoPixel Matrix. The simulation visualizes traffic light changes and simulated vehicle movements for two phases of traffic signals.
 
-....
- sketch123                => Arduino sketch folder
-  ├── sketch123.ino       => main Arduino file
-  ├── schematics.png      => (optional) an image of the required schematics
-  ├── layout.png          => (optional) an image of the layout
-  └── ReadMe.adoc         => this file
-....
+== Simulation Details
+The simulation operates in four main states:
 
-=== License
-This project is released under a {License} License.
+=== START: 
+Initial state where one set of traffic lights is green, and the other is red.
 
-=== Contributing
-To contribute to this project please contact arjovish https://id.arduino.cc/arjovish
+=== TRANSITION_Y: 
+Transition state where the green lights turn yellow.
 
-=== BOM
-Add the bill of the materials you need for this project.
+=== ALL_R: 
+A brief state where all lights are red, simulating the all-red phase in real traffic signals to allow safe intersection clearance.
 
-|===
-| ID | Part name      | Part number | Quantity
-| R1 | 10k Resistor   | 1234-abcd   | 10
-| L1 | Red LED        | 2345-asdf   | 5
-| A1 | Arduino Zero   | ABX00066    | 1
-|===
+=== SHIFTED: 
+The phase switches, and the traffic lights that were red turn green.
+Vehicle movements are visualized on the matrix to correspond with the traffic light states, enhancing the simulation's realism.
 
-
-=== Help
-This document is written in the _AsciiDoc_ format, a markup language to describe documents.
-If you need help you can search the http://www.methods.co.nz/asciidoc[AsciiDoc homepage]
-or consult the http://powerman.name/doc/asciidoc[AsciiDoc cheatsheet]
+== Contributing
+Your contributions are welcome! Please feel free to submit pull requests or open issues to improve the simulation or suggest new features.
